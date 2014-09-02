@@ -1,0 +1,1 @@
+This repo will house the Angular and Twitter Bootstrap app I built for the code school course
