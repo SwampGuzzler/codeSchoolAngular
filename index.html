@@ -11,7 +11,7 @@
 	<!-- We will be loading our Gem template below, using the ng-controller to 
 	load our StoreController -->
 	<div ng-controller="StoreController as store">
-		<ul class="ist-group">
+		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="product in store.products">
 			<!-- ng-controller is the Ang directive, storeCo is the Controller name, 'as' is an 
 			Angular keyword, and 'store' is an Alias which we'll use as inside of our Expressions.
@@ -22,12 +22,31 @@
 				<h3> {{product.description}} </h3>
 				<!-- button below will only Show if the value of the canPurchase property is set to true; that's what the ng-show Directive does by default -->
 				<button ng-show="products.canPurchase">Add to Cart? </button>
-
-				<!--<h2> Product Name </h2>
-				<h2> Product Price </h2>
-				<h2> Product Description </h2>-->
 			</li>
 		</ul>
+		<section ng-init="tab = 1">
+		<ul class="nav nav-pills">
+			<li> <a href ng-click="tab = 1">Description</a></li>
+			<li> <a href ng-click="tab = 2">Specifications</a></li>
+			<li> <a href ng-click="tab = 3">Reviews</a></li>
+		</ul>
+		{{tab}}
+		<div class="panel" ng-show="tab === 1">
+			<h4>Description</h4>
+			<li class="list-group-item" ng-repeat="product in store.products">
+				<p>{{products.description}}</p>
+			</li>
+		</div>
+		<div class="panel" ng-show="tab === 2">
+			<h4>Specifications</h4>
+			<p>None yett</p>
+		</div>
+		<div class="panel" ng-show="tab === 3">
+			<h4>Reviews</h4>
+			<p>None yet!</p>
+		</div>
+	</section>
 	</div>
+
   </body>
 </html>
