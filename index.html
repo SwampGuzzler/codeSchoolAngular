@@ -8,18 +8,22 @@
   <body>
     <p>This is an Angular App. Its version is 0.0.1</p>
 	<p>Or is it version {{0 + 1}}?</p>
+	<!-- We will be loading our Gem template below, using the ng-controller to 
+	load our StoreController -->
+	<div ng-controller="StoreController as store">
+
+	<!-- ng-controller is the Ang directive, storeCo is the Controller name, 'as' is an 
+	Angular keyword, and 'store' is an Alias which we'll use as inside of our Expressions.
+	Then, inside of our Expressions, we'll use the syntax 'app.product.property'
+	 -->
+		<h1> {{store.product.name}} </h1>
+		<h3> {{store.product.price}} </h3>
+		<h3> {{store.product.description}} </h3>
+
+
+		<!--<h2> Product Name </h2>
+		<h2> Product Price </h2>
+		<h2> Product Description </h2>-->
+	</div>
   </body>
 </html>
-
-<!--<!DOCTYPE html>
-<html ng-app="store">
-	<head>
-		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
-	</head>
-	<body>
-		<script type="text/javascript" src="angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<p>This is an Angular App. Its version is 0.0.1</p>
-		<p>Or is it version {{0 + 1}}?</p>
-	</body>
-</html>-->
