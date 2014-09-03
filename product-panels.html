@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html ng-app="store">
-  <head>
-    <script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-  </head>
-  <body>
-    <p>This is an Angular App. Its version is 0.0.1</p>
-	<p>Or is it version {{0 + 1}}?</p>
-	<!-- We will be loading our Gem template below, using the ng-controller to 
-	load our StoreController -->
-	<div ng-controller="StoreController as store">
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="product in store.products">
-			<!-- ng-controller is the Ang directive, storeCo is the Controller name, 'as' is an 
-			Angular keyword, and 'store' is an Alias which we'll use as inside of our Expressions.
-			Then, inside of our Expressions, we'll use the syntax 'app.product.property'
-			 -->
-				<h1 ng-include="'product-title.html'"></h1>
-				<product-title></product-title> <!-- Now we're loading it 2 ways! -->
-				<h3> {{product.description}} </h3>
-				<!-- button below will only Show if the value of the canPurchase property is set to true; that's what the ng-show Directive does by default -->
-				<button ng-show="products.canPurchase">Add to Cart? </button>
-			</li>
-		</ul>
-		<h3> <product-title> </h3>
-		<product-panels ng-controller="PanelController as panels">
-		
-		</product-panels>
-		<section ng-controller="PanelController as panel">
+<section>
 		<!-- Remember, 'panel' is now the alias to which we will refer to PanelController inside of this element -->
 		<ul class="nav nav-pills">
 			<li ng-class="{ active: panel.isSelected(1) }"> 
@@ -84,7 +54,3 @@
 			</form>
 		</div>
 	</section>
-	</div>
-
-  </body>
-</html>

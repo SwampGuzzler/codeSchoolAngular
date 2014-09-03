@@ -78,6 +78,16 @@
 			// that we want to load into the page
 		};
 	});
+	app.directive('productPanels', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'product-panels.html',
+			controller: function(){
+
+			},
+			controllerAs: 'panels'
+		};
+	});
 
 	var gems = [
 		{
