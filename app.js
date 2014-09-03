@@ -10,6 +10,17 @@
 	// StoreController is called. 
 		this.products = gems; // product is a property of our Controller
 	});
+	app.controller('PanelController', function() { 
+		this.tab = 1;
+		// Initialization and Configuration should always go inside of a Controller!
+
+		this.selectTab = function(setTab) {
+			this.tab = setTab;
+		};
+		this.isSelected = function(checkTab) {
+			return this.tab === checkTab;
+		};
+	});
 
 	var gems = [
 		{

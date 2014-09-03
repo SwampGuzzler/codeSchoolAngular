@@ -24,24 +24,36 @@
 				<button ng-show="products.canPurchase">Add to Cart? </button>
 			</li>
 		</ul>
-		<section ng-init="tab = 1">
+
+		<section ng-controller="PanelController as panel">
+		<!-- Remember, 'panel' is now the alias to which we will refer to PanelController inside of this element -->
 		<ul class="nav nav-pills">
-			<li> <a href ng-click="tab = 1">Description</a></li>
-			<li> <a href ng-click="tab = 2">Specifications</a></li>
-			<li> <a href ng-click="tab = 3">Reviews</a></li>
+			<li ng-class="{ active: panel.isSelected(1) }"> 
+			<!-- Basically the ng-class directive now says that the current tab (1 if we
+			click on the first tab) is the Active tab by adding a class to that
+			tab. The object that the ng-class directive takes in as an 
+			argument specifies the Name of the class we want to set as a key and an 
+			expression that we want to evaluate as a value. If this expression is true, 
+			we append this class to this element. Otherwise nothing. -->
+				<a href ng-click="panel.selectTab(1)">Description</a>
+				</li>
+			<li ng-class="{ active: panel.isSelected(2) }"> 
+				<a href ng-click="panel.selectTab(2)">Specifications</a>
+				</li>
+			<li ng-class="{ active: panel.isSelected(3) }"> 
+				<a href ng-click="panel.selectTab(3)">Reviews</a>
+			</li>
 		</ul>
 		{{tab}}
-		<div class="panel" ng-show="tab === 1">
+		<div class="panel" ng-show="panel.isSelected(1)">
 			<h4>Description</h4>
-			<li class="list-group-item" ng-repeat="product in store.products">
-				<p>{{products.description}}</p>
-			</li>
+				<p>{{product.description}}</p>
 		</div>
-		<div class="panel" ng-show="tab === 2">
+		<div class="panel" ng-show="panel.isSelected(2)">
 			<h4>Specifications</h4>
 			<p>None yett</p>
 		</div>
-		<div class="panel" ng-show="tab === 3">
+		<div class="panel" ng-show="panel.isSelected(3)">
 			<h4>Reviews</h4>
 			<p>None yet!</p>
 		</div>
