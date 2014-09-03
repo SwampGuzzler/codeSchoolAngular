@@ -68,6 +68,17 @@
 		};
 	});
 
+	app.directive('productTitle', function() {
+		return {
+			restrict: 'E', // Type of Directive; E is for Element b/c we're 
+			// declaring a new type of html element. Other type is Attribute; when
+			// we just add it onto any old <p> or <h1> as an 
+			// attribute: <p product-title></p>
+			templateUrl: 'product-title.html' // This is the url of the template
+			// that we want to load into the page
+		};
+	});
+
 	var gems = [
 		{
 			name: 'Topazz',
