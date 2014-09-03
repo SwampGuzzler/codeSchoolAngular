@@ -8,7 +8,46 @@
 	// The controller name should always be capitalized and have controller in it
 	// 2nd parameter is anonymous function that will be exectuted when our 
 	// StoreController is called. 
-		this.products = gems; // product is a property of our Controller
+		this.products = [
+		{
+			name: 'Topazz',
+			price: 20.95,
+			description: "pretty",
+			canPurchase: true,
+			images: [],
+			reviews: [
+				{
+					stars: 5,
+					body: "This gem crazy!",
+					author: "Alex M"
+				},
+				{
+					stars: 3,
+					body: "This gem decent",
+					author: "Luke C"
+				}
+			]
+		},
+		{
+			name: 'Emerald',
+			price: 29.0,
+			description: "beautiful",
+			canPurchase: true,
+			images: [],
+			reviews: [
+				{
+					stars: 5,
+					body: "This gem crazy!",
+					author: "Alex M"
+				},
+				{
+					stars: 3,
+					body: "This gem decent",
+					author: "Luke C"
+				}
+			]
+		}
+	]; // product is a property of our Controller
 	});
 	app.controller('PanelController', function() { 
 		this.tab = 1;
@@ -28,14 +67,38 @@
 			price: 20.95,
 			description: "pretty",
 			canPurchase: true,
-			images: []
+			images: [],
+			reviews: [
+				{
+					stars: 5,
+					body: "This gem crazy!",
+					author: "Alex M"
+				},
+				{
+					stars: 3,
+					body: "This gem decent",
+					author: "Luke C"
+				}
+			]
 		},
 		{
 			name: 'Emerald',
 			price: 29.0,
 			description: "beautiful",
 			canPurchase: true,
-			images: []
+			images: [],
+			reviews: [
+				{
+					stars: 5,
+					body: "This gem crazy!",
+					author: "Alex M"
+				},
+				{
+					stars: 3,
+					body: "This gem decent",
+					author: "Luke C"
+				}
+			]
 		}
 	];
 
