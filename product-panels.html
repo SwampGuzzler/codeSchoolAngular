@@ -1,56 +1,19 @@
-<section>
-		<!-- Remember, 'panel' is now the alias to which we will refer to PanelController inside of this element -->
-		<ul class="nav nav-pills">
-			<li ng-class="{ active: panel.isSelected(1) }"> 
-			<!-- Basically the ng-class directive now says that the current tab (1 if we
-			click on the first tab) is the Active tab by adding a class to that
-			tab. The object that the ng-class directive takes in as an 
-			argument specifies the Name of the class we want to set as a key and an 
-			expression that we want to evaluate as a value. If this expression is true, 
-			we append this class to this element. Otherwise nothing. -->
-				<a href ng-click="panel.selectTab(1)">Description</a>
-				</li>
-			<li ng-class="{ active: panel.isSelected(2) }"> 
-				<a href ng-click="panel.selectTab(2)">Specifications</a>
-				</li>
-			<li ng-class="{ active: panel.isSelected(3) }"> 
-				<a href ng-click="panel.selectTab(3)">Reviews</a>
-			</li>
-		</ul>
-		{{tab}}
-		<div class="panel" ng-show="panel.isSelected(1)">
-			<h4>Description</h4>
-				<p>{{product.description}}</p>
-		</div>
-		<div class="panel" ng-show="panel.isSelected(2)">
-			<h4>Specifications</h4>
-			<p>None yett</p>
-		</div>
-		<div class="panel" ng-show="panel.isSelected(3)">
-			<h4>Reviews</h4>
-			<p>None yet!</p>
-			<blockquote ng-repeat="review in product.reviews">
-			<b>Stars: {{review.stars}}</b>
-			{{review.body}}
-			<cite>by: {{review.author}}</cite></blockquote>
-			<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-
-				<blockquote ng-repeat="review in product.reviews">
-				<b>Stars: {{reviewCtrl.review.stars}}</b>
-				{{reviewCtrl.review.body}}
-				<cite>by: {{reviewCtrl.review.author}}</cite></blockquote>
-				<select ng-model="reviewCtrl.review.stars" required>
-					<option value="1">1 star</option>
-					<option value="2">2 star</option>
-					<option value="3">3 star</option>
-					<option value="4">4 star</option>
-					<option value="5">5 star</option>
-				</select>
-				<textarea ng-model="reviewCtrl.review.body" required></textarea>
-				<label>by: </label>
-				<input ng-model="review.author" type="email" required />
-				<div> reviewForm is {{reviewForm.$valid}} </div>
-				<input type="submit" value="Submit" />
-			</form>
-		</div>
-	</section>
+<aside class="panels">
+<ul class="nav nav-pills">
+<li><a href ng-click="panels.setCurrent(1)">Description</a></li>
+<li><a href ng-click="panels.setCurrent(2)">Specifications</a></li>
+<li><a href ng-click="panels.setCurrent(3)">Reviews</a></li>
+</ul>
+<div class="panel" ng-show="panels.isCurrent(1)">
+<h4> Description </h4>
+</div>
+<div class="panel" ng-show="panels.isCurrent(2)">
+<h4> Specifications </h4>
+</div>
+<div class="panel" ng-show="panels.isCurrent(3)">
+<h4> Reviews </h4>
+<product-review ng-repeat="review in product.reviews"
+review="review"></product-review>
+<product-review-form></product-review-form>
+</div>
+</aside>

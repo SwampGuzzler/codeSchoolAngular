@@ -1,91 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="store">
-  <head>
-    <script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="products.js"></script>
-  </head>
-  <body>
-    <p>This is an Angular App. Its version is 0.0.1</p>
-	<p>Or is it version {{0 + 1}}?</p>
-	<!-- We will be loading our Gem template below, using the ng-controller to 
-	load our StoreController -->
-	<div ng-controller="StoreController as store">
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="product in store.products">
-			<!-- ng-controller is the Ang directive, storeCo is the Controller name, 'as' is an 
-			Angular keyword, and 'store' is an Alias which we'll use as inside of our Expressions.
-			Then, inside of our Expressions, we'll use the syntax 'app.product.property'
-			 -->
-				<h1 ng-include="'product-title.html'"></h1>
-				<product-title></product-title> <!-- Now we're loading it 2 ways! -->
-				<h3> {{product.description}} </h3>
-				<!-- button below will only Show if the value of the canPurchase property is set to true; that's what the ng-show Directive does by default -->
-				<button ng-show="products.canPurchase">Add to Cart? </button>
-			</li>
-		</ul>
-		<h3> <product-title> </h3>
-		<product-panels ng-controller="PanelController as panels">
-
-		</product-panels>
-		<section ng-controller="PanelController as panel">
-		<!-- Remember, 'panel' is now the alias to which we will refer to PanelController inside of this element -->
-		<ul class="nav nav-pills">
-			<li ng-class="{ active: panel.isSelected(1) }"> 
-			<!-- Basically the ng-class directive now says that the current tab (1 if we
-			click on the first tab) is the Active tab by adding a class to that
-			tab. The object that the ng-class directive takes in as an 
-			argument specifies the Name of the class we want to set as a key and an 
-			expression that we want to evaluate as a value. If this expression is true, 
-			we append this class to this element. Otherwise nothing. -->
-				<a href ng-click="panel.selectTab(1)">Description</a>
-				</li>
-			<li ng-class="{ active: panel.isSelected(2) }"> 
-				<a href ng-click="panel.selectTab(2)">Specifications</a>
-				</li>
-			<li ng-class="{ active: panel.isSelected(3) }"> 
-				<a href ng-click="panel.selectTab(3)">Reviews</a>
-			</li>
-		</ul>
-		{{tab}}
-		<div class="panel" ng-show="panel.isSelected(1)">
-			<h4>Description</h4>
-				<p>{{product.description}}</p>
-		</div>
-		<div class="panel" ng-show="panel.isSelected(2)">
-			<h4>Specifications</h4>
-			<p>None yett</p>
-		</div>
-		<div class="panel" ng-show="panel.isSelected(3)">
-			<h4>Reviews</h4>
-			<p>None yet!</p>
-			<blockquote ng-repeat="review in product.reviews">
-			<b>Stars: {{review.stars}}</b>
-			{{review.body}}
-			<cite>by: {{review.author}}</cite></blockquote>
-			<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-
-				<blockquote ng-repeat="review in product.reviews">
-				<b>Stars: {{reviewCtrl.review.stars}}</b>
-				{{reviewCtrl.review.body}}
-				<cite>by: {{reviewCtrl.review.author}}</cite></blockquote>
-				<select ng-model="reviewCtrl.review.stars" required>
-					<option value="1">1 star</option>
-					<option value="2">2 star</option>
-					<option value="3">3 star</option>
-					<option value="4">4 star</option>
-					<option value="5">5 star</option>
-				</select>
-				<textarea ng-model="reviewCtrl.review.body" required></textarea>
-				<label>by: </label>
-				<input ng-model="review.author" type="email" required />
-				<div> reviewForm is {{reviewForm.$valid}} </div>
-				<input type="submit" value="Submit" />
-			</form>
-		</div>
-	</section>
-	</div>
-
-  </body>
+<html lang="en" ng-app="store">
+<head>
+<meta charset="UTF-8">
+<title> AngularJS Example Store </title>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="styles/app.css" type="text/css">
+</head>
+<body class="container">
+<ul class="products list-unstyled" ng-controller="StoreController as store">
+<li class="row" ng-repeat="product in store.products">
+<h3> <product-title /> </h3>
+<product-gallery></product-gallery>
+<product-panels></product-panels>
+<br class="clearfix" />
+</li>
+</ul> <!-- class="products" -->
+<script type="text/javascript" src="scripts/angular.min.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+</body>
 </html>
