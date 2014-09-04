@@ -1,5 +1,7 @@
 (function() {
-	var app = angular.module("store", []);
+	// Now the 'store' module DEPENDS on the 'store-products module' in the 
+	// products.js file, so the latter is included in the dependencies array. 
+	var app = angular.module("store", ['store-products']);
 	/* Where app is the name of the application, angular references the
 	Angular.js library, .module creates a new module, 'store' is the name 
 	of the application, and the empty array are the app's dependencies, 
@@ -68,26 +70,7 @@
 		};
 	});
 
-	app.directive('productTitle', function() {
-		return {
-			restrict: 'E', // Type of Directive; E is for Element b/c we're 
-			// declaring a new type of html element. Other type is Attribute; when
-			// we just add it onto any old <p> or <h1> as an 
-			// attribute: <p product-title></p>
-			templateUrl: 'product-title.html' // This is the url of the template
-			// that we want to load into the page
-		};
-	});
-	app.directive('productPanels', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-panels.html',
-			controller: function(){
 
-			},
-			controllerAs: 'panels'
-		};
-	});
 
 	var gems = [
 		{
